@@ -1,9 +1,12 @@
 package app
 
 import (
-	"github.com/revel/revel"
-	_ "github.com/revel/modules"
+	"fmt"
+	"inkdrop-server/app/config"
+	"log"
 
+	_ "github.com/revel/modules"
+	"github.com/revel/revel"
 )
 
 var (
@@ -15,6 +18,13 @@ var (
 )
 
 func init() {
+	if err := config.Initialize(); err != nil {
+		log.Fatal("Failed to load config : %w", err)
+	} else {
+		fmt.Println("*****************************")
+		fmt.Println(config.Instance())
+		fmt.Println("*****************************")
+	}
 	// Filters is the default set of global filters.
 	revel.Filters = []revel.Filter{
 		revel.PanicFilter,             // Recover from panics and display an error page instead.

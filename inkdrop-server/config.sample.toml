@@ -1,0 +1,4 @@
+[inkdrop]
+root = "http://localhost:19840"
+userID = "userid"
+password = "password"
