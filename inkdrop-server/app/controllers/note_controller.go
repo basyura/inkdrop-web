@@ -13,7 +13,7 @@ type NoteController struct {
 
 func (c NoteController) Index() revel.Result {
 
-	b, err := inkdrop.Get("/notes")
+	b, err := inkdrop.Get("notes")
 	if err != nil {
 		fmt.Println(err)
 		return c.RenderJSON(err)
@@ -24,7 +24,7 @@ func (c NoteController) Index() revel.Result {
 
 func (c NoteController) Show(id string) revel.Result {
 	// note:qPIR-2cx5
-	b, err := inkdrop.Get("/note:" + id)
+	b, err := inkdrop.Get("note:" + id)
 	if err != nil {
 		fmt.Println(err)
 		return c.RenderJSON(err)

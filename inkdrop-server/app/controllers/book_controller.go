@@ -12,7 +12,7 @@ type BookController struct {
 }
 
 func (c BookController) Index() revel.Result {
-	b, err := inkdrop.Get("/books")
+	b, err := inkdrop.Get("books")
 	if err != nil {
 		fmt.Println(err)
 		return c.RenderJSON(err)
