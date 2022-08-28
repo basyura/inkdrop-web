@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"fmt"
-	"inkdrop-server/app/inkdrop/proxy"
+	"inkdrop-server/app/inkdrop"
 
 	"github.com/revel/revel"
 )
@@ -13,23 +13,23 @@ type NoteController struct {
 
 func (c NoteController) Index() revel.Result {
 
-	b, err := proxy.Get("/notes")
+	b, err := inkdrop.Get("/notes")
 	if err != nil {
 		fmt.Println(err)
 		return c.RenderJSON(err)
 	}
 
-	return c.RenderJSON(string(b))
+	return c.RenderText(string(b))
 }
 
 func (c NoteController) Show(id string) revel.Result {
 	// note:qPIR-2cx5
-	b, err := proxy.Get("/note:" + id)
+	b, err := inkdrop.Get("/note:" + id)
 	if err != nil {
 		fmt.Println(err)
 		return c.RenderJSON(err)
 	}
 
-	return c.RenderJSON(string(b))
+	return c.RenderText(string(b))
 
 }
