@@ -15,7 +15,6 @@ func (c NoteController) Index() revel.Result {
 
 	b, err := inkdrop.Get("notes")
 	if err != nil {
-		fmt.Println(err)
 		return c.RenderJSON(err)
 	}
 
@@ -31,5 +30,4 @@ func (c NoteController) Show(id string) revel.Result {
 	}
 
 	return c.RenderText(string(b))
-
 }
